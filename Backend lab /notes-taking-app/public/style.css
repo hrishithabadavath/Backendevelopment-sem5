@@ -1,0 +1,219 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: Arial, sans-serif;
+
+    background: #f4f6f8;
+
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+
+    margin: 40px auto;
+}
+
+header {
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+header h1 {
+    margin-bottom: 8px;
+
+    font-size: 32px;
+}
+
+header p {
+    color: #777;
+}
+
+
+/* Note form */
+
+.note-form {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    margin-bottom: 30px;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.note-form h2 {
+    margin-top: 0;
+}
+
+
+input,
+textarea {
+    width: 100%;
+
+    padding: 12px;
+
+    margin-bottom: 15px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 7px;
+
+    font-size: 15px;
+
+    font-family: inherit;
+}
+
+textarea {
+    height: 130px;
+
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+
+    border-color: #555;
+}
+
+
+/* Buttons */
+
+button {
+    border: none;
+
+    padding: 10px 18px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    background: #333;
+
+    color: white;
+
+    font-size: 14px;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+
+/* Notes */
+
+.notes-container {
+    display: grid;
+
+    gap: 20px;
+}
+
+.note-card {
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.note-card h3 {
+    margin-top: 0;
+
+    font-size: 21px;
+}
+
+.note-content {
+    line-height: 1.6;
+
+    white-space: pre-wrap;
+}
+
+
+/* Timestamp */
+
+.timestamps {
+    margin-top: 15px;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+.timestamps p {
+    margin: 4px 0;
+}
+
+
+/* Actions */
+
+.actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+.edit-btn {
+    text-decoration: none;
+
+    background: #555;
+
+    color: white;
+
+    padding: 9px 15px;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+}
+
+.delete-form {
+    margin: 0;
+}
+
+.delete-btn {
+    background: #888;
+}
+
+
+/* Empty message */
+
+.empty-message {
+    background: white;
+
+    padding: 25px;
+
+    text-align: center;
+
+    border-radius: 10px;
+
+    color: #777;
+}
+
+
+/* Back link */
+
+.back-link {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    color: #333;
+
+    text-decoration: none;
+}
