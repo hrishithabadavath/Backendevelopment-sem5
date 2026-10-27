@@ -17,34 +17,40 @@ The experiments cover frontend and backend development concepts, including HTML5
 ## 🔬 Lab Experiments
 
 ### Experiment 1 — HTML5
+
 Introduction to HTML5 and the basic structure and elements of web pages.
 
-📁 Folder: `exp 1/`
+📁 [**View Experiment 1**](./exp%201/)
 
 ### Experiment 5 — JavaScript
+
 Practical implementation of JavaScript concepts and browser-side scripting.
 
-📁 Folder: `Exp05-JavaScript/`
+📁 [**View Experiment 5**](./Exp05-JavaScript/)
 
 ### Experiment 7 & 8 — ES6, DOM Manipulation and Event Handling
+
 Demonstrates modern JavaScript features, DOM manipulation, event handling, and an interactive To-Do List application.
 
-📁 Folder: `exp 7 and 8/`
+📁 [**View Experiment 7 & 8**](./exp%207%20and%208/)
 
 ### Experiment 12B — Node.js, Sessions and Cookies
+
 Explores backend development concepts involving Node.js, Express.js, sessions, and cookies.
 
-📁 Folder: `Experiment-12b/`
+📁 [**View Experiment 12B**](./Experiment-12b/)
 
 ### Experiment 13A — MongoDB and Mongoose
+
 Demonstrates database connectivity and data handling using MongoDB and Mongoose.
 
-📁 Folder: `Experiment-13a/`
+📁 [**View Experiment 13A**](./Experiment-13a/)
 
 ### Notes Taking App
+
 A notes management application demonstrating backend development and database operations.
 
-📁 Folder: `notes-taking-app/`
+📁 [**View Notes Taking App**](./notes-taking-app/)
 
 ## 🛠️ Technologies Used
 
