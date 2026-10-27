@@ -1,250 +1,147 @@
-# 📖 Theory — Unit 1: Student Management API Using Flask
+📖 Theory — Unit 1, Day 4: Session Management in Express.js
 
-## 📌 Overview
+📌 Overview
 
-This implementation demonstrates a **Student Management REST API** using Flask and Python.
+This implementation demonstrates session management using Express.js and express-session.
 
-The application provides endpoints to retrieve student records in JSON format. It allows users to view all students and retrieve an individual student using their ID. It also demonstrates basic routing and HTTP error handling.
+The application creates a session during login, stores a username in the session, accesses the session data on a profile page, and destroys the session during logout.
 
-## 🎯 Objective
+🎯 Objective
 
 To understand:
 
-- Flask application development
-- REST API fundamentals
-- HTTP request handling
-- Routing using Flask
-- JSON responses
-- GET requests
-- Dynamic URL parameters
-- Retrieving records by ID
-- HTTP status codes
-- Error handling
+Express Sessions
+Creating session variables
+Accessing session data
+Session expiration
+Destroying sessions
+Basic login/profile/logout flow
+💻 Technologies Used
 
-## 💻 Technologies Used
+Node.js
+Express.js
+JavaScript
+express-session
+🔐 Session Configuration
 
-- Python
-- Flask
-- Flask `jsonify`
-- REST API
-- JSON
+app.use(
+    session({
+        secret: 'mySecretKey',
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            maxAge: 60000
+        }
+    })
+);
+The session cookie has a lifetime of:
 
-## 📋 Student Data
+60000 milliseconds = 1 minute
+🔑 Login — Create Session
 
-The application contains three predefined student records.
+Route
 
-```python
-students = [
-    {"id": 1, "name": "Aarav", "branch": "CSE"},
-    {"id": 2, "name": "Diya", "branch": "ECE"},
-    {"id": 3, "name": "Rohan", "branch": "IT"}
-]
-```
+GET /login
+The username is stored in the session:
 
-Each student record contains:
+req.session.username = 'JohnDoe';
+Response:
 
-- `id`: Unique student identifier
-- `name`: Student's name
-- `branch`: Student's academic branch
+Session started for JohnDoe
+👤 Profile — Access Session
 
-The records are stored in a Python list.
+Route
 
-## ⚙️ API Implementation
+GET /profile
+The application checks:
 
-### 🏠 Home Route
+if (req.session.username)
+If the session exists:
 
-**GET `/`**
+Welcome JohnDoe
+Otherwise:
 
-Returns a simple message to confirm that the application is running.
+Please log in first.
+🚪 Logout — Destroy Session
 
-```python
-@app.route("/")
-def home():
-    return "Student Management API"
-```
+Route
 
-### 📋 Get All Students
+GET /logout
+The session is destroyed using:
 
-**GET `/students`**
+req.session.destroy()
+After successful destruction:
 
-Returns all available student records in JSON format.
+Session destroyed successfully
+🔄 Application Flow
 
-```python
-@app.route("/students")
-def get_students():
-    return jsonify(students)
-```
+/login
+   ↓
+Create Session
+   ↓
+Store username
+   ↓
+/profile
+   ↓
+Read Session Data
+   ↓
+/logout
+   ↓
+Destroy Session
+🛣️ Routes
 
-Example response:
+Method	Route	Purpose
+GET	/login	Create session
+GET	/profile	Access session data
+GET	/logout	Destroy session
+📂 Project Structure
 
-```json
-[
-    {"id": 1, "name": "Aarav", "branch": "CSE"},
-    {"id": 2, "name": "Diya", "branch": "ECE"},
-    {"id": 3, "name": "Rohan", "branch": "IT"}
-]
-```
-
-### 🔍 Get Student by ID
-
-**GET `/students/{student_id}`**
-
-Retrieves a particular student using their ID.
-
-```python
-@app.route("/students/<int:student_id>")
-def get_student(student_id):
-    student = next(
-        (s for s in students if s["id"] == student_id),
-        None
-    )
-    if student:
-        return jsonify(student)
-    else:
-        return jsonify({"error": "Student not found"}), 404
-```
-
-Example request:
-
-```http
-GET /students/2
-```
-
-Example response:
-
-```json
-{
-    "id": 2,
-    "name": "Diya",
-    "branch": "ECE"
-}
-```
-
-If the student does not exist, the API returns a `404 Not Found` response.
-
-Example error response:
-
-```json
-{
-    "error": "Student not found"
-}
-```
-
-## 🛣️ API Endpoints
-
-| Method | Endpoint | Purpose |
-|---|---|---|
-| GET | `/` | Displays the API welcome message |
-| GET | `/students` | Retrieves all students |
-| GET | `/students/{student_id}` | Retrieves a student by ID |
-
-## ⚠️ Error Handling
-
-The application checks whether the requested student ID exists in the student list.
-
-If a matching record is found, it returns the student details as JSON. Otherwise, it returns an error message with HTTP status code `404`.
-
-```python
-return jsonify({"error": "Student not found"}), 404
-```
-
-## 📂 Project Structure
-
-```text
-backend-project/
+Day_4(Session)/
 │
-├── backend-project/
-│   ├── app.py
-│   └── venv/
+├── app.js
+├── package.json
 └── README.md
-```
+🚀 How to Run
 
-- `app.py` — Contains the Flask application, student data, routes, and error handling.
-- `venv/` — Local Python virtual environment used for dependencies.
-- `README.md` — Project documentation.
+Install dependencies:
 
-The virtual environment should not be uploaded to GitHub.
+npm install
+Run the application:
 
-## 🚀 How to Run
+node app.js
+Then test in this order:
 
-### 1. Navigate to the Project Directory
+http://localhost:3000/login
+http://localhost:3000/profile
+http://localhost:3000/logout
+http://localhost:3000/profile
+After logout, /profile should display:
 
-From the main repository directory, run:
+Please log in first.
+📚 Concepts Demonstrated
 
-```bash
-cd "Theory/backend-project/backend-project"
-```
+Express.js
+express-session
+Session middleware
+req.session
+Session variables
+Session cookies
+Cookie expiration
+req.session.destroy()
+Basic session-based authentication flow
+🧭 Navigation
 
-### 2. Activate the Virtual Environment (Optional)
+⬅️ Back to Unit 1
 
-On macOS or Linux:
+📖 Back to Theory
 
-```bash
-source venv/bin/activate
-```
+🏠 Back to Main Repository
 
-### 3. Install Flask
+👩‍💻 Submitted By
 
-```bash
-python3 -m pip install flask
-```
+Hrishitha
+SAP ID: 590019239
+Course: Backend Development
+University: UPES
 
-### 4. Start the Application
-
-```bash
-python app.py
-```
-
-The Flask development server will display a local URL, usually:
-
-http://127.0.0.1:5000
-
-### 5. Test the Endpoints
-
-Open these URLs in your browser:
-
-- **Home:** http://127.0.0.1:5000/
-- **All Students:** http://127.0.0.1:5000/students
-- **Student with ID 2:** http://127.0.0.1:5000/students/2
-
-Try a non-existing student ID to test the `404 Not Found` response.
-
-## 📚 Concepts Demonstrated
-
-- Flask application creation
-- URL routing
-- HTTP GET requests
-- REST API fundamentals
-- JSON responses using `jsonify`
-- Dynamic URL parameters
-- Python lists and dictionaries
-- Searching records using `next()`
-- Conditional statements
-- HTTP status codes
-- Error handling
-- Running a local development server
-
-## ⚠️ Note
-
-- Student records are stored in a Python list.
-- The application supports only GET requests; create, update, and delete operations are not implemented.
-- No database is connected to the application.
-- Data is predefined in `app.py` and is not persisted in a database.
-- Debug mode is enabled, so this development configuration should not be used as-is in production.
-
-## 🧭 Navigation
-
-- ⬅️ Back to [Unit 1](../README.md)
-- 📖 Back to [Theory](../README.md)
-- 🏠 Back to [Main Repository](../../README.md)
-
-## 👩‍💻 Submitted By
-
-**Name:** Hrishitha Badavath
-**SAP ID:** 590015596
-**Course:** Backend Development
-**University:** UPES
-
-## 📝 Summary
-
-Theory — Implementation of a Student Management REST API using Flask to retrieve all student records and individual student details in JSON format.
+Theory — Unit 1, Day 4: Demonstration of creating, accessing, expiring, and destroying sessions using Express.js.
