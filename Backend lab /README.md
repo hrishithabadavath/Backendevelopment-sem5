@@ -117,8 +117,8 @@ Backend lab/
 
 ## 👩‍💻 Submitted By
 
-**Hrishitha Badavath**  
-B.Tech Computer Science and Engineering  
+**Hrishitha Badavath**
+B.Tech Computer Science and Engineering
 University of Petroleum and Energy Studies (UPES)
 
 This repository is maintained as part of the Backend Development laboratory coursework at UPES.
